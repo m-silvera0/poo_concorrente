@@ -16,13 +16,21 @@ public class Processo extends Thread{
     }
     public Processo(){
     }
-    public Processo(String nome, int nInteracoes){
+    public Processo(String nome, int nInteracoes, int prioridade){
         this.nome=nome;
         this.nInteracoes=nInteracoes;
+        setPriority(prioridade);
     }
     public void run(){
         for (int i = 0; i < nInteracoes; i++){
-            System.out.println("Processo: "+nome+ ": "+i);
+            System.out.println("Processo: ("+nome+ "): "+i);
+        try{
+            Thread.sleep(i *100);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        
         } 
     }
 }
